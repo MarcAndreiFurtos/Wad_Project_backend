@@ -7,12 +7,14 @@ import java.time.Instant;
 @Getter
 @Setter
 @Entity
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
-
+    private String userName;
+    private String password;
+    private String email;
+    private Instant created;
 }
