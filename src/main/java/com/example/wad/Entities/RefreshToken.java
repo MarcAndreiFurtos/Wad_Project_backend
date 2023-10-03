@@ -1,4 +1,5 @@
 package com.example.wad.Entities;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,12 +10,10 @@ import java.time.Instant;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class RefreshToken {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    private String userName;
-    private String password;
-    private String email;
-    private Instant created;
+    private Long id;
+    private String token;
+    public Instant createDate;
 }
