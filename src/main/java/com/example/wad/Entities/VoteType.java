@@ -1,5 +1,7 @@
 package com.example.wad.Entities;
 
+import com.example.wad.exceptions.SpringRedditException;
+
 import java.util.Arrays;
 
 public enum VoteType {
@@ -15,7 +17,7 @@ public enum VoteType {
         return Arrays.stream(VoteType.values())
                 .filter(value -> value.getDirection().equals(direction))
                 .findAny()
-                .orElseThrow(() -> new RuntimeException("Vote not found"));
+                .orElseThrow(() -> new SpringRedditException("vote not found"));
     }
 
     public Integer getDirection() {

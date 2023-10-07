@@ -1,5 +1,6 @@
 package com.example.wad.dto;
 
+import com.example.wad.Entities.RefreshToken;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
