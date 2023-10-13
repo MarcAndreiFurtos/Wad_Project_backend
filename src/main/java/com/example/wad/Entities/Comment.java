@@ -12,7 +12,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
     @ManyToOne(fetch = FetchType.LAZY)

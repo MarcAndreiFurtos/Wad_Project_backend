@@ -1,6 +1,6 @@
 //package com.example.wad;
 //
-//import com.example.wad.OpenAPIConfiguration;
+////import com.example.wad.OpenAPIConfiguration;
 //import org.springframework.boot.SpringApplication;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.context.annotation.Import;
@@ -8,11 +8,11 @@
 //
 //@SpringBootApplication
 //@EnableAsync
-//@Import(OpenAPIConfiguration.class)
+////@Import(OpenAPIConfiguration.class)
 //public class SpringRedditCloneApplication {
 //
 //    public static void main(String[] args) {
-//        SpringApplication.run(com.programming.techie.springredditclone.SpringRedditCloneApplication.class, args);
+//        SpringApplication.run(SpringRedditCloneApplication.class, args);
 //    }
 //
 //}

@@ -13,7 +13,7 @@ import java.time.Instant;
 @NoArgsConstructor
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
     private String postName;
     private String url;
