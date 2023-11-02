@@ -24,8 +24,8 @@ public class AdminService {
     private final PostService postService;
 
     @Transactional
-    public void BanUser(String username){
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("user not found"));
+    public void BanUser(String userName){
+        User user = userRepository.findByUserName(userName).orElseThrow(() -> new UsernameNotFoundException("user not found"));
         user.setBanned(true);
         userRepository.save(user);
     }

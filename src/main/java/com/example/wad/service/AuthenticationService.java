@@ -66,9 +66,9 @@ public class AuthenticationService {
     @Transactional(readOnly = true)
     public User getCurrentUser() {
         Principal principal = request.getUserPrincipal();
-        String username = principal.getName();
-        return userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User name not found - " + username));
+        String userName = principal.getName();
+        return userRepository.findByUserName(userName)
+                .orElseThrow(() -> new UsernameNotFoundException("User name not found - " + userName));
     }
 
 

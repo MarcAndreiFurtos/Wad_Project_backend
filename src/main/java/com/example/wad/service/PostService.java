@@ -45,8 +45,8 @@ public class PostService {
                 .collect(toList());
     }
 
-    public List<PostResponse> getAllPostsByUser(String username){
-        User user = userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("user not found"));
+    public List<PostResponse> getAllPostsByUser(String userName){
+        User user = userRepository.findByUserName(userName).orElseThrow(()->new UsernameNotFoundException("user not found"));
         return postRepository.findAllByUser(user)
                 .stream()
                 .map(postMapper::mapToDto)

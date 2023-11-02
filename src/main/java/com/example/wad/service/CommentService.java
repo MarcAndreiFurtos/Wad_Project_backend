@@ -44,8 +44,8 @@ public class CommentService {
                 .toList();
     }
 
-    public List<CommentDto> getAllCommentsByUser(String username){
-        User user = userRepository.findByUsername(username).orElseThrow(()-> new SpringRedditException("user not found"));
+    public List<CommentDto> getAllCommentsByUser(String userName){
+        User user = userRepository.findByUserName(userName).orElseThrow(()-> new SpringRedditException("user not found"));
         return commentRepository.findAllByUser(user)
                 .stream()
                 .map(commentMapper::mapToDto)

@@ -7,6 +7,7 @@ import java.time.Instant;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class CommentDto {
     private Long postId;
     private Long id;
