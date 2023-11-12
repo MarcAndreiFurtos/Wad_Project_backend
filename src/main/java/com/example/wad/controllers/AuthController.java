@@ -33,7 +33,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest){
         authenticationService.logIn(loginRequest);
-        return new ResponseEntity<>("login successfull", OK);
+        return new ResponseEntity<>("login successful", OK);
     }
     @PostMapping("/logout")
     public ResponseEntity<String> logout(@RequestBody HttpServletRequest request, HttpServletResponse response) {

@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterRequest {
-    @NotBlank(message = "email must not be blank")
-    private String email;
     @NotBlank(message = "username must not be blank")
     private String username;
     @NotBlank(message = "password must not be blank")

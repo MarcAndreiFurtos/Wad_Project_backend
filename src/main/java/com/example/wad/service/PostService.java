@@ -11,11 +11,10 @@ import com.example.wad.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -29,7 +28,16 @@ public class PostService {
     private final AuthenticationService authService;
     private final PostMapper postMapper;
     public void save(PostRequest postRequest){
-        postRepository.save(postMapper.map(postRequest,authService.getCurrentUser()));
+        log.info(postRequest.getDescription());
+        Post post = new Post();
+        post.setCreatedDate(Instant.now());
+        post.setPostName(postRequest.getPostName());
+        post.setUrl(postRequest.getUrl());
+        post.setDescription(postRequest.getDescription());
+        post.setVoteCount(0);
+        post.setUser(userRepository.findByUserName("kkkk").get());
+        log.info(post.getDescription());
+        postRepository.save(post);
     }
 
     @Transactional
@@ -42,11 +50,12 @@ public class PostService {
         return postRepository.findAll()
                 .stream()
                 .map(postMapper::mapToDto)
+                .peek(postResponse -> log.info("PostResponse: {}", postResponse.getPostName()))
                 .collect(toList());
     }
 
     public List<PostResponse> getAllPostsByUser(String userName){
-        User user = userRepository.findByUserName(userName).orElseThrow(()->new UsernameNotFoundException("user not found"));
+        User user = userRepository.findByUserName(userName).orElseThrow(()->new SpringRedditException("user not found"));
         return postRepository.findAllByUser(user)
                 .stream()
                 .map(postMapper::mapToDto)

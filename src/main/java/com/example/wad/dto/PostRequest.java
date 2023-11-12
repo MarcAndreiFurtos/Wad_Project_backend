@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostRequest {
-    private Long postId;
+//    private Long postId;
     @NotBlank(message = "post name can't be blank")
     private String postName;
     private String url;
-    private String text;
+    private String description;
 }

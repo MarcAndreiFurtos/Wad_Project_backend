@@ -1,11 +1,5 @@
 package com.example.wad.config;
 
-//import com.nimbusds.jose.jwk.JWK;
-//import com.nimbusds.jose.jwk.JWKSet;
-//import com.nimbusds.jose.jwk.RSAKey;
-//import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
-//import com.nimbusds.jose.jwk.source.JWKSource;
-//import com.nimbusds.jose.proc.SecurityContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -22,9 +16,6 @@ import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthen
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.web.SecurityFilterChain;
 
-import java.security.interfaces.RSAPrivateKey;
-import java.security.interfaces.RSAPublicKey;
-
 @Configuration
 @RequiredArgsConstructor
 public class SecurityConfig {
@@ -37,19 +28,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
+                .cors()
+                .and()
+                .csrf()
+                .disable()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/api/auth/**")
                         .permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/posts/")
+                        .requestMatchers("/api/posts/")
                         .permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/posts/**")
+                        .requestMatchers("/api/posts/**")
                         .permitAll()
-                        .requestMatchers("/v2/api-docs",
-                                "/configuration/ui",
-                                "/swagger-resources/**",
-                                "/configuration/security",
-                                "/swagger-ui.html",
-                                "/webjars/**")
+                        .requestMatchers("/api/votes/**")
+                        .permitAll()
+                        .requestMatchers("/api/comment/**")
+                        .permitAll()
+                        .requestMatchers("/api/votes")
                         .permitAll()
                         .anyRequest()
                         .authenticated())

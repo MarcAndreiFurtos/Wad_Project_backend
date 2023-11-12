@@ -1,6 +1,5 @@
 package com.example.wad.repository;
 
-import com.example.wad.Entities.Comment;
 import com.example.wad.Entities.Post;
 import com.example.wad.Entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

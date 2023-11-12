@@ -19,4 +19,6 @@ public class User {
     private Instant created;
     private boolean banned;
     private boolean isAdmin;
+    private boolean isLoggedIn;
+
 }
